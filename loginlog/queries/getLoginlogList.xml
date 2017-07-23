@@ -1,0 +1,29 @@
+<query id="getLoginlogList" action="select">
+	<tables>
+		<table name="member_loginlog" />
+	</tables>
+	<columns>
+		<column name="log_srl" />
+		<column name="member_srl" />
+		<column name="ipaddress" />
+		<column name="is_succeed" />
+		<column name="platform" />
+		<column name="browser" />
+		<column name="regdate" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="member_srl" var="member_srl" filter="number" pipe="and" />
+		<condition operation="like_prefix" column="regdate" var="s_regdate" pipe="and" />
+		<condition operation="like_prefix" column="ipaddress" var="s_ipaddress" pipe="and" />
+		<condition operation="more" column="regdate" var="daterange_start" pipe="and" />
+		<condition operation="less" column="regdate" var="daterange_end" pipe="and" />
+		<condition operation="like" column="platform" var="s_platform" pipe="and" />
+		<condition operation="like" column="browser" var="s_browser" pipe="and" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="regdate" order="order_type" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

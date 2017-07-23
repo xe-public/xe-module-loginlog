@@ -1,0 +1,16 @@
+.exportToExcel { clear:both; }
+.exportToExcel .detailSetting { margin:0; padding:0 16px 0 0; background:transparent url(../img/arrow_state_grey_collapsed.png) no-repeat right; text-decoration:none; color:#000; }
+.exportToExcel a,
+.exportToExcel a:hover { text-decoration:none; color:#000 !important; }
+.exportToExcel .detailSetting.active { background-image:url(../img/arrow_state_grey_expanded.png);}
+
+#detailSetting { padding:12px; position:absolute; left:0; top:30px; border:1px solid #cfcfcf; background:#fff; }
+.x_table .center { text-align:center !important; }
+.x_table .succeed { color:#18AC53; }
+.x_table .failed { color:#ee0000; }
+
+.groupList { margin:6px 0 0 0; display:none; }
+.groupList.open { display:block; }
+
+.rangeSearch .x_control-label {width:100px !important}
+.rangeSearch .x_controls {margin-left:120px !important}

@@ -1,0 +1,8 @@
+<query id="initLoginlogs" action="delete">
+	<tables>
+		<table name="member_loginlog" />
+	</tables>
+	<conditions>
+		<condition operation="below" column="regdate" var="expire_date" />
+	</conditions>
+</query>

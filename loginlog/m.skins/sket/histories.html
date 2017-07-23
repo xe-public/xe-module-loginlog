@@ -1,0 +1,20 @@
+<load target="css/loginlog.css" />
+
+<div class="sosifam">
+	<h2 class="or-split bl-numb text-align-center">{$lang->cmd_view_loginlog}</h2>
+	<ul class="history-list cfix">
+		<li class="history-item cfix" loop="$histories => $no, $history">
+			<div class="history-info">
+				<span class="history-gird text-ellipsis">
+					<span class="history-succeed" cond="$history->is_succeed == 'Y'">{$lang->is_succeed}</span>
+					<span class="history-failed" cond="$history->is_succeed == 'N'">{$lang->is_failed}</span>
+					<span class="history-title"><block cond="$history->platform">({$history->platform},</block> <block cond="$history->browser">{$history->browser})</block></span>
+				</span>
+				<div class="history-text">
+					<span class="history-ip"><strong>{$history->ipaddress}</strong></span>
+					<span class="history-auth">({zdate($history->regdate)})</span>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

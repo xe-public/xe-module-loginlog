@@ -1,0 +1,19 @@
+<load target="css/loginlog.css" />
+
+<div class="xl">
+	<h2 class="hx h2">{$lang->cmd_view_loginlog}</h2>
+	<ul class="lt">
+		<li loop="$histories => $no, $history">
+			<a href="#" onclick="return false">
+				<span class="title">
+					<block cond="$history->is_succeed == 'Y'">{$lang->login_succeed}</block>
+					<block cond="$history->is_succeed == 'N'">{$lang->login_failed}</block>
+				</span>
+				<span class="auth">
+					<strong>{$history->ipaddress}</strong>
+					<span class="time">{zdate($history->regdate)}</span>
+				</span>
+			</a>
+		</li>
+	</ul>
+</div>

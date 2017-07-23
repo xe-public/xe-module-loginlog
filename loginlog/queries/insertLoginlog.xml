@@ -1,0 +1,16 @@
+<query id="insertLoginlog" action="insert">
+	<tables>
+		<table name="member_loginlog" />
+	</tables>
+	<columns>
+		<column name="log_srl" var="log_srl" filter="number" notnull="notnull" />
+		<column name="member_srl" var="member_srl" filter="number" notnull="notnull" />
+		<column name="ipaddress" var="ipaddress" default="ipaddress()" />
+		<column name="is_succeed" var="is_succeed" notnull="notnull" />
+		<column name="platform" var="platform" default="Unknown" />
+		<column name="browser" var="browser" default="Unknown" />
+		<column name="regdate" var="regdate" default="curdate()" />
+		<column name="user_id" var="user_id" />
+		<column name="email_address" var="email_address" />
+	</columns>
+</query>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<grants />
+	<permissions />
+	<actions>
+		<action name="dispLoginlogAdminList" type="view" admin_index="true" menu_name="loginlog" menu_index="true" />
+		<action name="dispLoginlogAdminSetting" type="view" menu_name="loginlog" />
+		<action name="dispLoginlogAdminArrange" type="view" menu_name="loginlog" />
+		<action name="dispLoginlogAdminDesign" type="view" menu_name="loginlog" />
+
+		<action name="procLoginlogAdminInsertConfig" type="controller" ruleset="insertLoginlogConfig" />
+		<action name="procLoginlogAdminInsertDesignConfig" type="controller" ruleset="insertLoginlogDesignConfig" />
+		<action name="procLoginlogAdminSaveListSetting" type="controller" />
+		<action name="procLoginlogAdminCleanLog" type="controller" />
+		<action name="procLoginlogAdminDeleteChecked" type="controller" />
+		<action name="procLoginlogAdminExport" type="controller" />
+		<action name="procLoginlogAdminExportChecked" type="controller" />
+
+		<action name="getLoginlogAdminColorset" type="model" />
+
+		<action name="dispLoginlogHistories" type="view" index="true" />
+
+		<action name="procLoginlogDeleteHistories" type="controller" />
+	</actions>
+	<menus>
+		<menu name="loginlog">
+			<title xml:lang="ko">로그인 기록</title>
+		</menu>
+	</menus>
+</module>

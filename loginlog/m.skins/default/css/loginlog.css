@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* Element Reset */
+.xll,
+.xl table,
+.xl input,
+.xl textarea,
+.xl select,
+.xl button{font-family:Tahoma,Geneva,sans-serif;font-size:12px;color:#333}
+.xl button,
+.xl input[type=submit],
+.xl input[type=reset],
+.xl input[type=button]{cursor:pointer;overflow:visible}
+.xl img{border:0}
+.xl p{line-height:1.5}
+/* Heading */
+.xl .hx{position:relative;border-bottom:1px solid #ccc8be;padding:8px 10px;margin:0}
+.xl .hx:after{content:"";margin:0 -10px;position:relative;top:10px;display:block;clear:both;height:1px;background:#fff}
+.xl .hx.h2{background:#e5e5e5;text-shadow:1px 1px 0 #fff;position:relative;zoom:1}
+.xl .hx>h2{margin:0 10px 0 0;display:inline;font-size:16px;line-height:1.4}
+.xl .hx a{color:#000}
+/* Content */
+.xl .co{margin: 10px;line-height: 1.4;font-size: 14px;color:#333}
+/* DL */
+.xl .dl{margin:15px 0}
+.xl .dl>dt{font-weight:bold;margin-top:10px}
+.xl .dl>dt>em{font-style:normal;color:#e00}
+.xl .dl>dd{margin-left:20px}
+/* Button Area */
+.xl .ba{margin:15px 0;padding:0;list-style:none;border:1px solid #ddd;border-radius:4px}
+.xl .ba li{border-top:1px solid #ddd}
+.xl .ba li:first-child{border:0}
+.xl .ba li>a,
+.xl .ba li>button,
+.xl .ba li>input{display:block;white-space:nowrap;padding:7px 10px;text-decoration:none;color:#000;background:#f4f4f4;text-shadow:0 1px 0 #fff;overflow:hidden;text-overflow:ellipsis}
+/* List */
+.xl .lt{margin:0;padding:0;list-style:none;background:#f8f8f8;font-size:14px}
+.xl .lt li{border-bottom:1px solid #ccc8be}
+.xl .lt a{display:block;text-decoration:none;color:#000;padding:10px;*zoom:1}
+.xl .lt a:after{content:"";display:block;clear:both}
+.xl .lt .th{float:left;margin:0 10px 5px 0;border:1px solid #ccc;background:#666;color:#fff;text-align:center;line-height:80px;width:80px;height:80px;font-size:14px}
+.xl .lt .title{display:block;margin:0 0 5px 0}
+.xl .lt .title strong{font-size:14px;font-weight:bold}
+.xl .lt .title em{font-size:12px;color:#333;color:#6352d2}
+.xl .lt .text{display:block; color:#666;margin:0 0 5px 0}
+.xl .lt .auth{display:block;font-size:12px}
+.xl .lt .auth .time{padding:0 5px;border-left:1px solid #bfbfbf}

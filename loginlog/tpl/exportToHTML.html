@@ -1,0 +1,19 @@
+<script type="text/javascript">//<<![CDATA[
+	var file_info = [];
+	{@ $i=1;}
+	<!--@foreach($sheets as $no => $sheet)-->
+	file_info[{$i] = {};
+	file_info[{$i}].url = '{getUrl('')}/files/cache/loginlog/html';
+	{@$i++}
+	<!--@end-->
+
+	<!--@if($callback)-->
+		try{
+			parent['{$callback}'](file_info);
+		}catch(e){
+			alert(e.message);
+		}
+	<!--@end-->
+
+//]]>>
+</script>

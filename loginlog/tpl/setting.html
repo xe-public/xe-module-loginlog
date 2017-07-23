@@ -1,0 +1,81 @@
+<include target="header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/loginlog/tpl/compatibility/maserati/setting/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form ruleset="insertLoginlogConfig" action="./" method="post" class="x_form-horizontal section">
+	<input type="hidden" name="module" value="loginlog" />
+	<input type="hidden" name="act" value="procLoginlogAdminInsertConfig" />
+	<input type="hidden" name="xe_validator_id" value="modules/loginlog/tpl/compatibility/maserati/setting/1" />
+	<h1>{$lang->cmd_module_config}</h1>
+	<div class="x_control-group">
+		<p class="x_control-label">{$lang->loginlog_target_group}</p>
+		<div class="x_controls">
+			<block loop="$group_list=>$group_srl,$group">
+			<label for="targetGroup{$group_srl}" class="x_inline"><input type="checkbox" id="targetGroup{$group_srl}" name="target_group[]" value="{$group_srl}" checked="checked"|cond="in_array($group_srl, $config->target_group)" /> {$group->title}</label> 
+			</block>
+			<p>{$lang->about_loginlog_target_group}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<p class="x_control-label">{$lang->delete_member_loginlog}</p>
+		<div class="x_controls">
+				<label for="delete_logs_y" class="x_inline"><input type="radio" id="delete_logs_y" name="delete_logs" value="Y" checked="checked"|cond="$config->delete_logs == 'Y'" /> {$lang->cmd_yes}</label>
+				<label for="delete_logs_n" class="x_inline"><input type="radio" id="delete_logs_n" name="delete_logs" value="N" checked="checked"|cond="$config->delete_logs == 'N'" /> {$lang->cmd_no}</label>
+				<p>{$lang->about_delete_member_loginlog}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<p class="x_control-label">{$lang->admin_user_log}</p>
+		<div class="x_controls">
+				<label for="admin_user_log_y" class="x_inline"><input type="radio" id="admin_user_log_y" name="admin_user_log" value="Y" checked="checked"|cond="$config->admin_user_log == 'Y'" /> {$lang->use}</label>
+				<label for="admin_user_log_n" class="x_inline"><input type="radio" id="admin_user_log_n" name="admin_user_log" value="N" checked="checked"|cond="$config->admin_user_log == 'N'" /> {$lang->notuse}</label>
+				<p>{$lang->about_admin_user_log}</p>
+		</div>
+	</div>
+
+	<h1>{$lang->cmd_export_to_xls}</h1>
+	<p class="x_well">{$lang->desc_exportToXls}</p>
+	<div class="x_control-group">
+		<label for="listCountForExport" class="x_control-label">{$lang->listCountForExport}</label>
+		<div class="x_controls">
+			<input type="number" id="listCountForExport" name="listCountForExport" value="{$config->exportConfig->listCount}"></input>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label for="pageCountForExport" class="x_control-label">{$lang->pageCountForExport}</label>
+		<div class="x_controls">
+			<input type="number" id="pageCountForExport" name="pageCountForExport" value="{$config->exportConfig->pageCount}" />
+		</div>
+	</div>
+	<div class="x_control-group">
+		<p class="x_control-label">{$lang->exportTarget}</p>
+		<div class="x_controls">
+			<select name="exportType">
+				<option value="">{$lang->grant_to_all}</option>
+				<option value="include" selected="selected"|cond="$config->exportConfig->exportType == 'include'">{$lang->exportType_includeGroup}</option>
+				<option value="exclude" selected="selected"|cond="$config->exportConfig->exportType == 'exclude'">{$lang->exportType_excludeGroup}</option>
+			</select>
+
+			<div class="groupList includeGroup">
+				<block loop="$group_list => $group_srl, $group">
+				<label for="includeGroup{$group_srl}" class="x_inline"><input type="checkbox" id="includeGroup{$group_srl}" name="includeGroup[]" value="{$group_srl}" checked="checked"|cond="in_array($group_srl, $config->exportConfig->includeGroup)" /> {$group->title}</label> 
+				</block>
+			</div>
+			<div class="groupList excludeGroup">
+				<block loop="$group_list => $group_srl, $group">
+				<label for="excludeGroup{$group_srl}" class="x_inline"><input type="checkbox" id="excludeGroup{$group_srl}" name="excludeGroup[]" value="{$group_srl}" checked="checked"|cond="in_array($group_srl, $config->exportConfig->excludeGroup)" /> {$group->title}</label> 
+				</block>
+			</div>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label for="includeAdmin" class="x_control-label">{$lang->includeAdmin}</label>
+		<div class="x_controls">
+			<label for="includeAdmin"><input type="checkbox" id="includeAdmin" name="includeAdmin" value="Y" checked="checked"|cond="$config->exportConfig->includeAdmin == 'Y'" /> {$lang->desc_includeAdmin}</label>
+		</div>
+	</div>
+	<div class="btnArea"><input type="submit" class="x_btn x_btn-primary" value="{$lang->cmd_save}" /></div>
+</form>
+<script type="text/javascript">initExportType('{$config->exportConfig->exportType}');</script>

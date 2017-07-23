@@ -1,0 +1,18 @@
+<include target="header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form ruleset="cleanLogs" action="./" method="post">
+	<fieldset>
+		<legend>{$lang->arrange_loginlog}</legend>
+		<input type="hidden" name="module" value="loginlog" />
+		<input type="hidden" name="act" value="procLoginlogAdminCleanLog" />
+		<button type="submit" class="x_btn">{$lang->cmd_clean_logs}</button>
+		<button type="submit" name="expire_date" value="{date('Ymd', strtotime('-1 month'))}" class="x_btn">{$lang->cmd_clean_logs_ago_month}</button>
+		<button type="submit" name="expire_date" value="{date('Ymd', strtotime('-3 month'))}" class="x_btn">{$lang->cmd_clean_logs_ago_three_month}</button>
+		<button type="submit" name="expire_date" value="{date('Ymd', strtotime('-6 month'))}" class="x_btn">{$lang->cmd_clean_logs_ago_six_month}</button>
+		<button type="submit" name="expire_date" value="{date('Ymd', strtotime('-1 year'))}" class="x_btn">{$lang->cmd_clean_logs_ago_year}</button>
+	</fieldset>
+</form>

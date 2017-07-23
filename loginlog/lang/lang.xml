@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="loginlog">
+		<value xml:lang="ko"><![CDATA[로그인 기록]]></value>
+		<value xml:lang="en"><![CDATA[Sign-in Log]]></value>
+	</item>
+	<item name="loginlog_list">
+		<value xml:lang="ko"><![CDATA[로그인 기록 목록]]></value>
+		<value xml:lang="en"><![CDATA[Sign-in Logs]]></value>
+	</item>
+	<item name="arrange_loginlog">
+		<value xml:lang="ko"><![CDATA[기록 정리하기]]></value>
+	</item>
+	<item name="cmd_loginlog_module_config">
+		<value xml:lang="ko"><![CDATA[기본 설정]]></value>
+		<value xml:lang="en"><![CDATA[Basic Setup]]></value>
+	</item>
+	<item name="cmd_view_loginlog">
+		<value xml:lang="ko"><![CDATA[로그인 기록]]></value>
+		<value xml:lang="en"><![CDATA[Sign-in Logs]]></value>
+	</item>
+	<item name="cmd_clean_logs">
+		<value xml:lang="ko"><![CDATA[모든 기록 정리]]></value>
+		<value xml:lang="en"><![CDATA[Delete All Logs]]></value>
+	</item>
+	<item name="cmd_clean_logs_ago_month">
+		<value xml:lang="ko"><![CDATA[1개월 이상된 기록 정리]]></value>
+	</item>
+	<item name="cmd_clean_logs_ago_three_month">
+		<value xml:lang="ko"><![CDATA[3개월 이상된 기록 정리]]></value>
+	</item>
+	<item name="cmd_clean_logs_ago_six_month">
+		<value xml:lang="ko"><![CDATA[6개월 이상된 기록 정리]]></value>
+	</item>
+	<item name="cmd_clean_logs_ago_year">
+		<value xml:lang="ko"><![CDATA[1년 이상된 기록 정리]]></value>
+	</item>
+	<item name="success_clean_log">
+		<value xml:lang="ko"><![CDATA[로그인 기록을 정리하였습니다.]]></value>
+	</item>
+	<item name="msg_failed_clean_logs">
+		<value xml:lang="ko"><![CDATA[로그인 기록을 정리하지 못했습니다.]]></value>
+	</item>
+	<item name="delete_member_loginlog">
+		<value xml:lang="ko"><![CDATA[회원 로그인 기록 삭제]]></value>
+	</item>
+	<item name="about_delete_member_loginlog">
+		<value xml:lang="ko"><![CDATA[회원이 탈퇴하는 경우 해당 회원에 관한 로그인 기록을 모두 삭제합니다.]]></value>
+	</item>
+	<item name="admin_user_log">
+		<value xml:lang="ko"><![CDATA[최고 관리자 로그인 기록]]></value>
+	</item>
+	<item name="about_admin_user_log">
+		<value xml:lang="ko"><![CDATA[최고 관리자의 로그인 기록을 남깁니다. 로그인 실패 시에는 설정값과 상관없이 기록됩니다.]]></value>
+	</item>
+	<item name="member_no">
+		<value xml:lang="ko"><![CDATA[회원 번호]]></value>
+		<value xml:lang="en"><![CDATA[Member No.]]></value>
+	</item>
+	<item name="is_succeed">
+		<value xml:lang="ko"><![CDATA[성공]]></value>
+		<value xml:lang="en"><![CDATA[Succeed]]></value>
+	</item>
+	<item name="is_failed">
+		<value xml:lang="ko"><![CDATA[실패]]></value>
+		<value xml:lang="en"><![CDATA[Failed]]></value>
+	</item>
+	<item name="login_succeed">
+		<value xml:lang="ko"><![CDATA[로그인 성공]]></value>
+	</item>
+	<item name="login_failed">
+		<value xml:lang="ko"><![CDATA[로그인 실패]]></value>
+	</item>
+	<item name="cmd_yes">
+		<value xml:lang="ko"><![CDATA[예]]></value>
+		<value xml:lang="en"><![CDATA[Yes]]></value>
+	</item>
+	<item name="cmd_no">
+		<value xml:lang="ko"><![CDATA[아니오]]></value>
+		<value xml:lang="en"><![CDATA[No]]></value>
+	</item>
+	<item name="cmd_cancle">
+		<value xml:lang="ko"><![CDATA[취소]]></value>
+		<value xml:lang="en"><![CDATA[Cancle]]></value>
+	</item>
+	<item name="display_items">
+		<value xml:lang="ko"><![CDATA[표시 항목]]></value>
+	</item>
+	<item name="cmd_delete_checked">
+		<value xml:lang="ko"><![CDATA[선택 삭제]]></value>
+	</item>
+	<item name="cmd_export_to_xls">
+		<value xml:lang="ko"><![CDATA[엑셀 파일(XLS)로 내보내기]]></value>
+	</item>
+	<item name="cmd_export_to_html">
+		<value xml:lang="ko"><![CDATA[HTML 파일로 내보내기]]></value>
+	</item>
+	<item name="cmd_generate_html_file">
+		<value xml:lang="ko"><![CDATA[HTML 파일 생성]]></value>
+	</item>
+	<item name="desc_generating_html_file">
+		<value xml:lang="ko"><![CDATA[HTML 파일을 생성하고 있습니다. 자료가 많은 경우 오랜 시간이 걸릴수도 있습니다.]]></value>
+	</item>
+	<item name="listCountForExport">
+		<value xml:lang="ko"><![CDATA[페이지별 출력 수]]></value>
+	</item>
+	<item name="pageCountForExport">
+		<value xml:lang="ko"><![CDATA[전체 페이지 수]]></value>
+	</item>
+	<item name="exportTarget">
+		<value xml:lang="ko"><![CDATA[출력 대상]]></value>
+	</item>
+	<item name="includeAdmin">
+		<value xml:lang="ko"><![CDATA[최고관리자 포함]]></value>
+	</item>
+	<item name="desc_exportToXls">
+		<value xml:lang="ko"><![CDATA[로그인 기록 목록을 엑셀 파일(XLS)로 내보냅니다. 엑셀 파일을 내보낼 경우 각 페이지가 시트 단위로 나누어서 저장됩니다.]]></value>
+	</item>
+	<item name="desc_exportToXls_forList">
+		<value xml:lang="ko"><![CDATA[로그인 기록 목록을 엑셀 파일(XLS)로 내보냅니다. 엑셀 파일을 내보낼 경우 각 페이지가 시트 단위로 나누어서 저장됩니다.<br />자세한 설정은 '기본 설정'에서 할 수 있습니다.]]></value>
+	</item>
+	<item name="desc_exportToHTML">
+		<value xml:lang="ko"><![CDATA[로그인 기록 목록을 HTML 파일로 내보냅니다. 'HTML 파일 생성' 버튼을 누르면 각 페이지별로 HTML 문서가 만들어지며, HTML 파일 생성이 완료되면 아래에 다운로드를 받을 수 있는 링크가 나타납니다.]]></value>
+	</item>
+	<item name="desc_exportToHTML_forList">
+		<value xml:lang="ko"><![CDATA[로그인 기록 목록을 HTML 파일로 내보냅니다. 'HTML 파일 생성' 버튼을 누르면 각 페이지별로 HTML 문서가 만들어지며, HTML 파일 생성이 완료되면 아래에 다운로드를 받을 수 있는 링크가 나타납니다.<br />자세한 설정은 '기본 설정'에서 할 수 있습니다.]]></value>
+	</item>
+	<item name="desc_includeAdmin">
+		<value xml:lang="ko"><![CDATA[최고관리자의 로그인 기록을 엑셀 파일에 포함합니다.]]></value>
+	</item>
+	<item name="exportType_includeGroup">
+		<value xml:lang="ko"><![CDATA[선택한 그룹만 출력합니다.]]></value>
+	</item>
+	<item name="exportType_excludeGroup">
+		<value xml:lang="ko"><![CDATA[선택한 그룹을 제외합니다.]]></value>
+	</item>
+	<item name="msg_success_login">
+		<value xml:lang="ko"><![CDATA[로그인 성공]]></value>
+	</item>
+	<item name="php_version_warning">
+		<value xml:lang="ko"><![CDATA[현재 설치된 PHP 버전은 <strong>%s</strong>입니다.<br />PHP 버전이 <strong>5.2</strong>이상이어야만, 모든 기능을 사용할 수 있습니다.]]></value>
+	</item>
+	<item name="php_version_warning_for_feature">
+		<value xml:lang="ko"><![CDATA[현재 설치된 PHP 버전은 <strong>%s</strong>입니다.<br />PHP 버전이 <strong>5.2</strong>이상이어야만 사용할 수 있는 기능입니다.]]></value>
+	</item>
+	<item name="loginlog_target_group">
+		<value xml:lang="ko"><![CDATA[로그인 기록 대상 그룹]]></value>
+	</item>
+	<item name="about_loginlog_target_group">
+		<value xml:lang="ko"><![CDATA[선택된 그룹이 로그인 할 때 로그인 기록을 남깁니다. (선택하지 않으면 모든 그룹이 선택된 것과 동일하게 작동합니다.)]]></value>
+	</item>
+	<item name="daterange_search">
+		<value xml:lang="ko"><![CDATA[기간별 검색]]></value>
+	</item>
+	<item name="loginpc">
+		<value xml:lang="ko"><![CDATA[접속 환경]]></value>
+	</item>
+	<item name="msg_loginlg_filename_required">
+		<value xml:lang="ko"><![CDATA[파일 이름을 입력해 주세요.]]></value>
+	</item>
+	<item name="cmd_export_checked">
+		<value xml:lang="ko"><![CDATA[선택 내보내기]]></value>
+	</item>
+	<item name="cmd_trace_loginlog">
+		<value xml:lang="ko"><![CDATA[로그인 기록 추적']]></value>
+	</item>
+</lang>

@@ -1,0 +1,44 @@
+<include target="./common_header.html" />
+<div class="bd">
+<h1>{$lang->cmd_view_loginlog}</h1>
+<table class="bd_lst bd_tb_lst bd_tb">
+	<caption class="blind">
+		Total: {number_format($total_count)}, Page {number_format($page)}/{number_format($total_page)}
+	</caption>
+	<thead class="bg_f_f9">
+		<tr>
+			<th scope="col" class="no">{$lang->no}</th>
+			<th scope="col" class="m_no">{$lang->category}</th>
+			<th scope="col" class="m_no">{$lang->ipaddress}</th>
+			<th scope="col" class="title">{$lang->loginpc}</th>
+			<th scope="col" class="m_no">{$lang->date}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr loop="$histories  => $no, $history">
+			<td class="no">{$no}</td>
+			<td class="cate">
+				<strong class="text-success" cond="$history->is_succeed == 'Y'">[{$lang->is_succeed}]</strong>
+				<strong class="text-danger" cond="$history->is_succeed == 'N'">[{$lang->is_failed}]</strong>
+			</td>
+			<td>{$history->ipaddress}</td>
+			<td class="title">
+				<block cond="$history->platform && $history->browser">
+				{$history->platform} ({$history->browser})
+				</block>
+			</td>
+			<td class="time">{zdate($history->regdate)}</td>
+		</tr>
+	</tbody>
+</table>
+<form action="./" method="get" class="bd_pg clear">
+	<a href="{getUrl('page','','module_srl','')}" class="direction">‹ Prev</a>
+	<!--@while($page_no = $page_navigation->getNextPage())-->
+	<strong class="this" cond="$page==$page_no">{$page_no}</strong> 
+	<a href="{getUrl('page',$page_no,'module_srl','')}" cond="$page!=$page_no">{$page_no}</a>
+	<!--@end-->
+	<a href="{getUrl('page',$page_navigation->last_page,'module_srl','')}" class="direction">Next ›</a>
+</form>
+
+</div>
+<include target="./common_footer.html" />

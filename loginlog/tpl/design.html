@@ -1,0 +1,37 @@
+<include target="header.html" />
+
+<load target="./js/design_config.js" />
+<form method="post" class="x_form-horizontal">
+	<input type="hidden" name="module" value="loginlog">
+	<input type="hidden" name="act" value="procLoginlogAdminInsertDesignConfig">
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->skin}</label>
+		<div class="x_controls">
+			<select name="skin"  onchange="doGetSkinColorset(this.options[this.selectedIndex].value)">
+				<option value="{$key}" selected|cond="$config->design->skin == $key" loop="$skin_list => $key, $val">{$val->title}</option>
+			</select>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="mskin">{$lang->mobile_skin}</label>
+		<div class="x_controls">
+			<select id="mskin" name="mskin">
+				<option value="{$key}" selected|cond="$config->design->mskin == $key" loop="$mskin_list => $key, $val">{$val->title}</option>
+			</select>
+		</div>
+	</div>
+	<div class="x_control-group" style="display:none"|cond="!$config->colorset">
+		<label class="x_control-label" for="colorset">{$lang->colorset}</label>
+		<div class="x_controls">
+			<div id="loginlog_colorset">
+			</div>
+		</div>
+	</div>
+	<div class="x_clearfix btnArea">
+		<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}"></span>
+	</div>
+</form>
+
+<script>
+	jQuery(function() { doGetSkinColorset("{$config->skin}"); });
+</script>

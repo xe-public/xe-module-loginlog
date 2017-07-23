@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+	<title xml:lang="ko">로그인 기록</title>
+	<description xml:lang="ko">로그인 시 접속한 IP와 시간, 접속 환경을 기록하는 모듈입니다.</description>
+	<version>1.4.0</version>
+	<date>2016-11-14</date>
+	<category>member</category>
+
+	<author link="https://github.com/xe-public/xe-module-loginlog">
+		<name xml:lang="ko">XEPublic</name>
+	</author>
+</module>

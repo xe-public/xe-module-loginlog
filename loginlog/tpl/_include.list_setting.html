@@ -1,0 +1,52 @@
+<form ruleset="saveListSetting" action="./" method="post" class="listSetting">
+	<fieldset>
+		<legend>{$lang->display_items}</legend>
+		<input type="hidden" name="module" value="loginlog" />
+		<input type="hidden" name="act" value="procLoginlogAdminSaveListSetting" />
+		<label class="x_inline"><input type="checkbox" name="listSetting[]" checked|cond="in_array('member.user_name', $loginlog_config->listSetting)" value="member.user_name"> {$lang->user_name}</label>
+		<label class="x_inline"><input type="checkbox" name="listSetting[]" checked|cond="in_array('member.nick_name', $loginlog_config->listSetting)" value="member.nick_name"> {$lang->nick_name}</label>
+		<label class="x_inline"><input type="checkbox" name="listSetting[]" checked|cond="in_array('member.user_id', $loginlog_config->listSetting)" value="member.user_id"> {$lang->user_id}</label>
+		<label class="x_inline"><input type="checkbox" name="listSetting[]" checked|cond="in_array('member.email_address', $loginlog_config->listSetting)" value="member.email_address"> {$lang->email_address}</label>
+		<label class="x_inline"><input type="checkbox" name="listSetting[]" checked|cond="in_array('loginlog.ipaddress', $loginlog_config->listSetting)" value="loginlog.ipaddress"> {$lang->ipaddress}</label>
+		<label class="x_inline"><input type="checkbox" name="listSetting[]" checked|cond="in_array('loginlog.regdate', $loginlog_config->listSetting)" value="loginlog.regdate"> {$lang->date}</label>
+
+		<button type="submit"  class="x_btn x_btn-mini">{$lang->cmd_save}</button>
+	</fieldset>
+</form>
+{@ $column = 2;}
+<block cond="in_array('member.user_name', $loginlog_config->listSetting)">
+{@
+	$listSettingUserName = true;
+	$column++;
+}
+</block>
+<block cond="in_array('member.nick_name', $loginlog_config->listSetting)">
+{@
+	$listSettingNickName = true;
+	$column++;
+}
+</block>
+<block cond="in_array('member.user_id', $loginlog_config->listSetting)">
+{@
+	$listSettingUserId = true;
+	$column++;
+}
+</block>
+<block cond="in_array('member.email_address', $loginlog_config->listSetting)">
+{@
+	$listSettingEmail = true;
+	$column++;
+}
+</block>
+<block cond="in_array('loginlog.ipaddress', $loginlog_config->listSetting)">
+{@
+	$listSettingIP = true;
+	$column++;
+}
+</block>
+<block cond="in_array('loginlog.regdate', $loginlog_config->listSetting)">
+{@
+	$listSettingDate = true;
+	$column++;
+}
+</block>

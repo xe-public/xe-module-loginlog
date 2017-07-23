@@ -1,0 +1,42 @@
+<include target="./common_header.html" />
+<h1>{$lang->cmd_view_loginlog}</h1>
+<table class="table table-striped table-hover">
+	<caption>
+		Total: {number_format($total_count)}, Page {number_format($page)}/{number_format($total_page)}
+	</caption>
+	<thead>
+		<tr>
+			<th>{$lang->no}</th>
+			<th>{$lang->category}</th>
+			<th>{$lang->ipaddress}</th>
+			<th>접속 환경</th>
+			<th>{$lang->date}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr loop="$histories  => $no, $history">
+			<td>{$no}</td>
+			<td>
+				<strong class="text-success" cond="$history->is_succeed == 'Y'">[{$lang->is_succeed}]</strong>
+				<strong class="text-danger" cond="$history->is_succeed == 'N'">[{$lang->is_failed}]</strong>
+			</td>
+			<td>{$history->ipaddress}</td>
+			<td>
+				<block cond="$history->platform && $history->browser">
+				{$history->platform} ({$history->browser})
+				</block>
+			</td>
+			<td>{zdate($history->regdate)}</td>
+		</tr>
+	</tbody>
+</table>
+<div class="pagination pagination-centered">
+	<ul>
+		<li><a href="{getUrl('page','','module_srl','')}" class="direction">&laquo; {$lang->first_page}</a></li> 
+		<!--@while($page_no = $page_navigation->getNextPage())-->
+		<li class="active"|cond="$page == $page_no"><a href="{getUrl('page',$page_no,'module_srl','')}">{$page_no}</a></li>
+		<!--@end-->
+		<li><a href="{getUrl('page',$page_navigation->last_page,'module_srl','')}" class="direction">{$lang->last_page} &raquo;</a></li>
+	</ul>
+</div>
+<include target="./common_footer.html" />

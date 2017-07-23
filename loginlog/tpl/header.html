@@ -1,0 +1,22 @@
+<load target="./css/loginlog_admin.css" />
+<load target="./js/loginlog_admin.js" />
+
+<div class="x_page-header">
+	<h1>{$lang->loginlog}</h1>
+</div>
+
+<ul class="x_nav x_nav-tabs">
+	<li class="x_active"|cond="$act == 'dispLoginlogAdminList'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispLoginlogAdminList')}">{$lang->loginlog_list}</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispLoginlogAdminArrange'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispLoginlogAdminArrange')}">{$lang->arrange_loginlog}</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispLoginlogAdminSetting'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispLoginlogAdminSetting')}">{$lang->cmd_loginlog_module_config}</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispLoginlogAdminDesign'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispLoginlogAdminDesign')}">
+		{$lang->design}</a>
+	</li>
+</ul>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ruleset version="1.5.0">
+	<customrules>
+		<rule name="boolean" type="enum" test="Y@N" delim="@" />
+		<rule name="exportType" type="enum" test="@include@exclude" delim="@" />
+	</customrules>
+	<fields>
+		<field name="delete_logs" default="N" rule="boolean" required="true" />
+		<field name="admin_user_log" default="N" rule="boolean" required="true" />
+		<field name="listCountForExport" rule="number" />
+		<field name="pageCountForExport" rule="number" />
+		<field name="exportType" />
+		<field name="includeGroup[]">
+			<if test="$exportType == 'include'" attr="required" value="true" />
+		</field>
+		<field name="excludeGroup[]">
+			<if test="$exportType == 'exclude'" attr="required" value="true" />
+		</field>
+	</fields>
+</ruleset>

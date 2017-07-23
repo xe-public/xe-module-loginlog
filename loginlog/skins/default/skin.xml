@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+	<title xml:lang="ko">로그인 기록 기본 스킨</title>
+	<description xml:lang="ko">
+		로그인 기본 스킨
+	</description>
+	<version>0.1</version>
+	<date>2013-12-22</date>
+
+	<author email_address="admin@funnyxe.com" link="http://funnyxe.com/">
+		<name xml:lang="ko">퍼니엑스이</name>
+	</author>
+
+	<colorset>
+		<color name="white">
+			<title xml:lang="ko">기본</title>
+		</color>
+	</colorset>
+</skin>

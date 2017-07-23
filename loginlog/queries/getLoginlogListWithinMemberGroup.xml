@@ -1,0 +1,37 @@
+<query id="getLoginlogListWithinMemberGroup" action="select">
+	<tables>
+		<table name="member" alias="member" />
+		<table name="member_group_member" alias="group" />
+		<table name="member_loginlog" alias="loginlog" />
+	</tables>
+	<columns>
+		<column name="member.*" />
+		<column name="loginlog.*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="loginlog.member_srl" default="member.member_srl" filter="number" pipe="and" />
+		<condition operation="equal" column="loginlog.member_srl" var="member_srl" filter="number" pipe="and" />
+		<condition operation="like" column="member.user_id" var="s_user_id" pipe="and" />
+		<condition operation="like" column="member.user_name" var="s_user_name" pipe="and" />
+		<condition operation="like" column="member.nick_name" var="s_nick_name" pipe="and" />
+		<condition operation="like_prefix" column="loginlog.regdate" var="s_regdate" pipe="and" />
+		<condition operation="like_prefix" column="loginlog.ipaddress" var="s_ipaddress" pipe="and" />
+		<condition operation="equal" column="member.is_admin" var="is_admin" pipe="and" />
+		<condition operation="equal" column="group.member_srl" default="loginlog.member_srl" pipe="and" />
+		<condition operation="in" column="group.group_srl" var="include_group_srls" pipe="and" />
+		<condition operation="notin" column="group.group_srl" var="exclude_group_srls" pipe="and" />
+		<condition operation="more" column="loginlog.regdate" var="daterange_start" pipe="and" />
+		<condition operation="less" column="loginlog.regdate" var="daterange_end" pipe="and" />
+		<condition operation="like" column="loginlog.platform" var="s_platform" pipe="and" />
+		<condition operation="like" column="loginlog.browser" var="s_browser" pipe="and" />
+	</conditions>
+	<groups>
+		<group column="loginlog.log_srl" />
+	</groups>
+	<navigation>
+		<index var="sort_index" default="loginlog.regdate" order="order_type" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

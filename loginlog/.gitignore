@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+composer.lock
+/vendor
+/node_modules/
+
+.idea
+*.sublime-workspace
+*.sublime-project
+.codeintel
+
+error_log

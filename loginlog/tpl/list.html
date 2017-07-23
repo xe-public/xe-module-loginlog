@@ -1,0 +1,235 @@
+<include target="header.html" />
+
+<include target="_include.list_setting.html" />
+<load target="./js/checkHTML5.js" />
+<!--%load_js_plugin("ui.datepicker")-->
+
+<script>
+var phpVersion = '{phpversion()}';
+var phpWarning = '{sprintf($lang->php_version_warning, phpversion())}';
+</script>
+<div class="exportToExcel">
+	<form ruleset="exportToExcel" action="./" method="post" target="exportFrame" onsubmit="return checkPHPVersion();">
+		<fieldset>
+			<legend>{$lang->cmd_export_to_xls}</legend>
+			<p>{$lang->desc_exportToXls_forList}</p>
+			<input type="hidden" name="module" value="loginlog" />
+			<input type="hidden" name="act" value="procLoginlogAdminExport" />
+			<input type="hidden" name="type" value="excel" />
+			<input type="hidden" name="startDate" value="{htmlspecialchars(Context::get('daterange_start'))}" />
+			<input type="hidden" name="endDate" value="{htmlspecialchars(Context::get('daterange_end'))}" />
+			<input type="submit" value="{$lang->cmd_export_to_xls}" class="x_btn x_btn-success" />
+		</fieldset>
+	</form>
+	<iframe name="exportFrame" src="about:blank" style="position:absolute; left:-200px; top:-200px; width:1px; height:1px;"></iframe>
+</div>
+<div class="exportToHTML" style="display:none;">
+	<form ruleset="exportToHTML" action="./" method="post" target="exportFrame" onsubmit="return checkPHPVersion();">
+		<fieldset>
+			<legend>{$lang->cmd_export_to_html}</legend>
+			<p>{$lang->desc_exportToHTML_forList}</p>
+			<input type="hidden" name="module" value="loginlog" />
+			<input type="hidden" name="act" value="procLoginlogAdminExport" />
+			<input type="hidden" name="type" value="html" />
+			<input type="hidden" name="callback" value="completeGenerateHTMLFile" />
+			<input type="submit" value="{$lang->cmd_generate_html_file}" class="x_btn x_btn-success" />
+		</fieldset>
+	</form>
+</div>
+<div style="x_clearfix"></div>
+
+<div class="message info" cond="version_compare(phpversion(), '5.2.0', '<')">
+	<p>{sprintf($lang->php_version_warning, phpversion())}</p>
+</div>
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form action="./" method="get" class="x_form-horizontal rangeSearch">
+	<input type="hidden" name="error_return_url" value="{getRequestUriByServerEnviroment()}">
+	<input type="hidden" name="module" value="admin">
+	<input type="hidden" name="act" value="dispLoginlogAdminList">
+	<div class="x_control-group">
+		<div class="x_control-label">{$lang->daterange_search}</div>
+		<div class="x_controls">
+			<input type="date" name="daterange_start" value="{htmlspecialchars($daterange_start)}" title="시작일: YYYY-MM-DD"> ~ 
+			<input type="date" name="daterange_end" value="{htmlspecialchars($daterange_end)}" title="종료일: YYYY-MM-DD"> 
+			<input type="submit" value="{$lang->cmd_search}" class="x_btn">
+			<p class="x_help-block">
+			YYYY-MM-DD(연-월-일) 형식으로 입력해 주세요.<br>
+			예) 2010-12-30, 2011-01-13
+			</p>
+		</div>
+	</div>
+</form>
+
+<form ruleset="deleteLogs" action="./" method="post" class="form">
+	<input type="hidden" name="module" value="loginlog">
+	<input type="hidden" name="act" value="procLoginlogAdminDeleteChecked">
+	<table width="100%" border="0" cellspacing="0" id="loginlogList" class="x_table x_table-striped x_table-hover">
+		<caption>
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispLoginlogAdminList')}" class="active"|cond="!$isSucceed">{$lang->total}<span cond="!$isSucceed">({number_format($total_count)})</span></a> 
+		<i class="vr">|</i> 
+		<a href="{getUrl('isSucceed', 'Y')}" class="active"|cond="$isSucceed == 'Y'">{$lang->is_succeed}<span cond="$isSucceed == 'Y'">({number_format($total_count)})</span></a> 
+		<i class="vr">|</i> 
+		<a href="{getUrl('isSucceed', 'N')}" class="active"|cond="$isSucceed == 'N'">{$lang->is_failed}<span cond="$isSucceed == 'N'">({number_format($total_count)})</span></a>
+		<div class="x_pull-right">
+			<!--//<button name="act" value="procLoginlogAdminDeleteChecked" type="submit" class="x_btn">{$lang->cmd_export_checked}</button> -->
+			<input type="submit" value="{$lang->cmd_delete_checked}" class="x_btn">
+		</div>
+		</caption>
+		<thead>
+		<tr>
+			<th class="center" scope="col">{$lang->no}</th>
+			<th class="center" scope="col">
+			{$lang->category}
+			</th>
+			<th scope="col" cond="$listSettingUserName">{$lang->user_name}</th>
+			<th scope="col" cond="$listSettingNickName || $listSettingUserId">
+				<block cond="$listSettingNickName && $listSettingUserId">
+				{$lang->nick_name} ({$lang->user_id})
+				</block>
+				<block cond="$listSettingNickName && !$listSettingUserId">
+				{$lang->nick_name}
+				</block>
+				<block cond="!$listSettingNickName && $listSettingUserId">
+				{$lang->user_id}
+				</block>
+			</th>
+			<th scope="col" cond="$listSettingEmail">{$lang->email_address}</th>
+			<th scope="col">OS</th>
+			<th scope="col">브라우저</th>
+			<th scope="col" cond="$listSettingIP">{$lang->ipaddress}</th>
+			<th scope="col" cond="$listSettingDate">{$lang->date}</th>
+			<th scope="col"><input type="checkbox" data-name="cart[]" title="Check All" /></th>
+		</tr>
+		</thead>
+		<tfoot>
+		<tr>
+			<th class="center" scope="col">{$lang->no}</th>
+			<th class="center" scope="col">{$lang->category}</th>
+			<th scope="col" cond="$listSettingUserName">{$lang->user_name}</th>
+			<th scope="col" cond="$listSettingNickName || $listSettingUserId">
+				<block cond="$listSettingNickName && $listSettingUserId">
+				{$lang->nick_name} ({$lang->user_id})
+				</block>
+				<block cond="$listSettingNickName && !$listSettingUserId">
+				{$lang->nick_name}
+				</block>
+				<block cond="!$listSettingNickName && $listSettingUserId">
+				{$lang->user_id}
+				</block>
+			</th>
+			<th scope="col" cond="$listSettingEmail">{$lang->email_address}</th>
+			<th scope="col">OS</th>
+			<th scope="col">브라우저</th>
+			<th scope="col" cond="$listSettingIP">{$lang->ipaddress}</th>
+			<th scope="col" cond="$listSettingDate">{$lang->date}</th>
+			<th scope="col"><input type="checkbox" data-name="cart[]" title="Check All" /></th>
+		</tr>
+		</tfoot>
+		<tbody>
+			<tr cond="!$total_count">
+				<td colspan="{$column}">로그인 기록이 없습니다.</td>
+			</tr>
+			<tr loop="$log_list => $no, $log">
+				<td class="number center">{$no}</td>
+				<td class="center">
+					<strong class="succeed" cond="$log->is_succeed == 'Y'">[{$lang->is_succeed}]</strong>
+					<strong class="failed" cond="$log->is_succeed == 'N'">[{$lang->is_failed}]</strong>
+				</td>
+				<td cond="$listSettingUserName">
+					<a href="{getUrl('search_target', 'member_srl', 'search_keyword', $log->member_srl)}">{$log->user_name}</a>
+				</td>
+				<td cond="$listSettingNickName || $listSettingUserId">
+					<block cond="$listSettingNickName && $listSettingUserId">
+						<a href="{getUrl('search_target', 'member_srl', 'search_keyword', $log->member_srl)}"><span class="member_{$log->member_srl}">{$log->nick_name}</span></a> 
+						<a href="{getUrl('search_target', 'member_srl', 'search_keyword', $log->member_srl)}">({$log->user_id})</a>
+					</block>
+					<block cond="$listSettingNickName && !$listSettingUserId">
+						<span class="member_{$log->member_srl}">{$log->nick_name}</span> <a href="{getUrl('search_target', 'member_srl', 'search_keyword', $log->member_srl)}">[검색]</a>
+					</block>
+					<block cond="!$listSettingNickName && $listSettingUserId">
+						<a href="{getUrl('search_target', 'member_srl', 'search_keyword', $log->member_srl)}">{$log->user_id}</a>
+					</block>
+				</td>
+				<td cond="$listSettingEmail">
+					<a href="{getUrl('search_target', 'member_srl', 'search_keyword', $log->member_srl)}">{$log->email_address}</a>
+				</td>
+				<td scope="col">
+					<block cond="$log->platform">
+						{$log->platform}
+					</block>
+				</td>
+				<td scope="col">
+					<block cond="$log->browser">
+						{$log->browser}
+					</block>
+				</td>
+				<td cond="$listSettingIP"><a href="{getUrl('search_target', 'ipaddress', 'search_keyword', $log->ipaddress)}">{$log->ipaddress}</a></td>
+				<td class="date" cond="$listSettingDate">{zdate($log->regdate, 'Y-m-d H:i:s')}</td>
+				<td><span cond="!$log->log_srl">-</span><input type="checkbox" name="cart[]" value="{$log->log_srl}" cond="$log->log_srl" /></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="x_pull-right">
+		<!--//<button name="act" value="procLoginlogAdminDeleteChecked" type="submit" class="x_btn">{$lang->cmd_export_checked}</button> -->
+		<input type="submit" value="{$lang->cmd_delete_checked}" class="x_btn">
+	</div>
+</form>
+
+<div class="search">
+	<form class="x_pagination x_pagination-centered">
+		<input type="hidden" name="module" value="loginlog" />
+		<input type="hidden" name="act" value="dispLoginlogAdminList" />
+		<ul>
+			<li class="x_disabled"|cond="$page == $page_navigation->first_page">
+				<a href="{getUrl('page', '')}">« {$lang->first_page}</a>
+			</li>
+			<li class="x_active"|cond="$page == $page_no" loop="$page_no = $page_navigation->getNextPage()">
+				<a href="{getUrl('page', $page_no)}">{$page_no}</a>
+			</li>
+			<li class="x_disabled"|cond="$page == $page_navigation->last_page">
+				<a href="{getUrl('page', $page_navigation->last_page)}">{$lang->last_page} »</a>
+			</li>
+		</ul>
+	</form>
+	<form action="" method="get" class="search center x_input-append x_clearfix">
+		<input type="hidden" name="module" value="admin" />
+		<input type="hidden" name="act" value="dispLoginlogAdminList" />
+		<select name="search_target" title="{$lang->search_target}" style="margin-right:4px">
+			<option value="user_id" selected|cond="$search_target == 'user_id'">{$lang->user_id}</option>
+			<option value="user_name" selected|cond="$search_target == 'user_name'">{$lang->user_name}</option>
+			<option value="nick_name" selected|cond="$search_target == 'nick_name'">{$lang->nick_name}</option>
+			<option value="ipaddress" selected|cond="$search_target == 'ipaddress'">{$lang->ipaddress}</option>
+			<option value="member_srl" selected|cond="$search_target == 'member_srl'">{$lang->member_no}</option>
+			<option value="platform" selected|cond="$search_target == 'platform'">OS</option>
+			<option value="browser" selected|cond="$search_target == 'browser'">브라우저</option>
+		</select>
+		<input type="text" name="search_keyword" value="{$search_keyword}" >
+		<button type="submit" class="x_btn x_btn-inverse">{$lang->cmd_search}</button>
+		<a href="{getUrl('search_target', '', 'search_keyword', '')}" class="x_btn">{$lang->cmd_cancle}</a>
+	</form>
+</div>
+
+<script>
+(function($){
+	$(function(){
+		if(!window.supportedHTML5.input.date)
+		{
+			var option = {
+				changeMonth: true,
+				changeYear: true,
+				gotoCurrent: false,
+				dateFormat:'yy-mm-dd',
+				yearRange:'-100:+10',
+				mandatory:true
+			};
+
+			$.extend(option,$.datepicker.regional['{Context::getLangType()}']);
+			$('input[name=daterange_start], input[name=daterange_end]').datepicker(option);
+		}
+	});
+})(jQuery);
+</script>
