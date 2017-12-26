@@ -182,6 +182,11 @@ class loginlog extends ModuleObject
 	function recompileCache()
 	{
 	}
+
+    public function makeObject($code, $msg)
+    {
+        return class_exists('BaseObject') ? new BaseObject($code, $msg) : new Object($code, $msg);
+    }
 }
 
 /* End of file : loginlog.class.php */

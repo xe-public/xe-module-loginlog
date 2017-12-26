@@ -69,7 +69,7 @@ class loginlogController extends loginlog
 		// 넘어온 아이디가 없다면 실행 중단
 		if(!$obj->user_id)
 		{
-			return new Object();
+			return $this->makeObject();
 		}
 
 		/**
@@ -78,7 +78,7 @@ class loginlogController extends loginlog
 		 */
 		if(!$obj->password)
 		{
-			return new Object();
+			return $this->makeObject();
 		}
 
 		// 대상 회원의 비밀번호와 회원 번호를 구함
@@ -87,7 +87,7 @@ class loginlogController extends loginlog
 		// 존재하지 않는 회원이라면 기록하지 않음
 		if(!$output->data)
 		{
-			return new Object();
+			return $this->makeObject();
 		}
 
 		$member_srl = $output->data->member_srl;
@@ -101,7 +101,7 @@ class loginlogController extends loginlog
 		// 비밀번호가 맞다면 기록하지 않음
 		if($oMemberModel->isValidPassword($password, $obj->password))
 		{
-			return new Object();
+			return $this->makeObject();
 		}
 
 		// loginlogModel 객체 생성
@@ -130,7 +130,7 @@ class loginlogController extends loginlog
 
 			if(!$isTargetGroup)
 			{
-				return new Object();
+				return $this->makeObject();
 			}
 		}
 
@@ -153,7 +153,7 @@ class loginlogController extends loginlog
 		$log_info->email_address = $email_address;
 		$this->insertLoginlog($log_info, false);
 
-		return new Object();
+		return $this->makeObject();
 	}
 
 	/**
@@ -163,7 +163,7 @@ class loginlogController extends loginlog
 	{
 		if(!$member_info->member_srl)
 		{
-			return new Object();
+			return $this->makeObject();
 		}
 
 		// 로그인 기록 모듈의 설정값을 구함
@@ -171,7 +171,7 @@ class loginlogController extends loginlog
 		$config = $oLoginlogModel->getModuleConfig();
 
 		// 최고관리자는 기록하지 않는다면 패스~
-		if($config->admin_user_log != 'Y' && $member_info->is_admin == 'Y') return new Object();
+		if($config->admin_user_log != 'Y' && $member_info->is_admin == 'Y') return $this->makeObject();
 
 		// 로그인 기록 대상 그룹이 설정되어 있다면...
 		if(is_array($config->target_group) && count($config->target_group) > 0)
@@ -196,7 +196,7 @@ class loginlogController extends loginlog
 
 			if(!$isTargetGroup)
 			{
-				return new Object();
+				return $this->makeObject();
 			}
 		}
 
@@ -216,7 +216,7 @@ class loginlogController extends loginlog
 		$log_info->email_address = $member_info->email_address;
 		$this->insertLoginlog($log_info);
 
-		return new Object();
+		return $this->makeObject();
 	}
 
 	/**
@@ -226,7 +226,7 @@ class loginlogController extends loginlog
 	{
 		if(!$obj->member_srl)
 		{
-			return new Object();
+			return $this->makeObject();
 		}
 
 		$oModel = getModel('loginlog');
@@ -234,7 +234,7 @@ class loginlogController extends loginlog
 
 		if($config->delete_logs != 'Y')
 		{
-			return new Object();
+			return $this->makeObject();
 		}
 
 		executeQuery('loginlog.deleteMemberLoginlogs', $obj);
@@ -247,7 +247,7 @@ class loginlogController extends loginlog
 		$logged_info = Context::get('logged_info');
 		if(!$logged_info)
 		{
-			return new Object();
+			return $this->makeObject();
 		}
 
 		/**
@@ -262,7 +262,7 @@ class loginlogController extends loginlog
 		$logged_info = Context::get('logged_info');
 		if(!$logged_info)
 		{
-			return new Object();
+			return $this->makeObject();
 		}
 
 		/**

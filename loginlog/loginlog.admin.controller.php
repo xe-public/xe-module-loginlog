@@ -64,7 +64,7 @@ class loginlogAdminController extends loginlog
 	public function procLoginlogAdminSaveListSetting()
 	{
 		// GET 방식으로 접근하는 것을 방지합니다.
-		if(Context::getRequestMethod() == 'GET') return new Object(-1, 'msg_invalid_request');
+		if(Context::getRequestMethod() == 'GET') return $this->makeObject(-1, 'msg_invalid_request');
 
 		$oLoginlogModel = getModel('loginlog');
 		$config = $oLoginlogModel->getModuleConfig();
@@ -98,7 +98,7 @@ class loginlogAdminController extends loginlog
 	public function procLoginlogAdminInsertDesignConfig()
 	{
 		// GET 방식으로 접근하는 것을 방지합니다.
-		if(Context::getRequestMethod() == 'GET') return new Object(-1, 'msg_invalid_request');
+		if(Context::getRequestMethod() == 'GET') return $this->makeObject(-1, 'msg_invalid_request');
 
 		$oLoginlogModel = getModel('loginlog');
 		$config = $oLoginlogModel->getModuleConfig();
@@ -179,7 +179,7 @@ class loginlogAdminController extends loginlog
 		if(version_compare(phpversion(), '5.2.0', '<'))
 		{
 			$phpWarning = sprintf(Context::getLang('php_version_warning_for_feature'), phpversion());
-			return new Object(-1, $phpWarning);
+			return $this->makeObject(-1, $phpWarning);
 		}
 
 		@set_time_limit(0);
@@ -278,7 +278,7 @@ class loginlogAdminController extends loginlog
 		if(version_compare(phpversion(), '5.2.0', '<'))
 		{
 			$phpWarning = sprintf(Context::getLang('php_version_warning_for_feature'), phpversion());
-			return new Object(-1, $phpWarning);
+			return $this->makeObject(-1, $phpWarning);
 		}
 
 		@set_time_limit(0);
