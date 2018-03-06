@@ -239,7 +239,7 @@ class loginlogController extends loginlog
 
 		executeQuery('loginlog.deleteMemberLoginlogs', $obj);
 
-		return new Object();
+		return $this->makeObject();
 	}
 
 	public function triggerBeforeModuleInit(&$obj)

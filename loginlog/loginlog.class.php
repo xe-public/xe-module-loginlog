@@ -22,7 +22,7 @@ class loginlog extends ModuleObject
 	{
 		$this->insertTrigger();
 
-		return new Object();
+		return $this->makeObject();
 	}
 
 	/**
@@ -37,7 +37,7 @@ class loginlog extends ModuleObject
 			$oModuleController->deleteTrigger($trigger[0], $trigger[1], $trigger[2], $trigger[3], $trigger[4]);
 		}
 
-		return new Object();
+		return $this->makeObject();
 	}
 
 	/**
@@ -173,13 +173,13 @@ class loginlog extends ModuleObject
 			$oDB->addIndex('member_loginlog', 'idx_email_address', 'email_address', false);
 		}
 
-		return new Object(0, 'success_updated');
+		return $this->makeObject(0, 'success_updated');
 	}
 
 	/**
 	 * @brief 캐시 파일 재생성
 	 **/
-	function recompileCache()
+	public function recompileCache()
 	{
 	}
 
