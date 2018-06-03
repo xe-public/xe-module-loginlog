@@ -183,7 +183,7 @@ class loginlog extends ModuleObject
 	{
 	}
 
-    public function makeObject($code = '', $msg = '')
+    public function makeObject($code = 0, $msg = 'success')
     {
         return class_exists('BaseObject') ? new BaseObject($code, $msg) : new Object($code, $msg);
     }
