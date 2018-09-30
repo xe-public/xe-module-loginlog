@@ -14,6 +14,25 @@ class loginlogAdminView extends loginlog
 	{
 		// 템플릿 폴더 지정
 		$this->setTemplatePath($this->module_path . 'tpl');
+
+		$oLayoutModel = getModel('layout');
+
+		// 레이아웃 목록을 가져와서 Context::set()
+		Context::set('layout_list', $oLayoutModel->getLayoutList());
+		$mlayout_list = $oLayoutModel->getLayoutList(0, 'M');
+		
+		Context::set('mlayout_list', $mlayout_list);
+		
+		$this->config = getModel('loginlog')->getModuleConfig();
+
+		Context::set('config', $this->config);
+
+		$layout_info = $oLayoutModel->getLayout($this->config->layout_srl);
+		if($layout_info)
+		{
+			$this->module_info->layout_srl = $this->config->layout_srl;
+			$this->setLayoutPath($layout_info->path);
+		}
 	}
 
 	/**
@@ -45,7 +64,7 @@ class loginlogAdminView extends loginlog
 		$columnList[] = 'loginlog.browser';
 
 		Context::set('loginlog_config', $config);
-
+debugPrint($config);
 		// 목록을 구하기 위한 옵션
 		$args = new stdClass;
 		$args->page = Context::get('page'); ///< 페이지
@@ -136,21 +155,14 @@ class loginlogAdminView extends loginlog
 
 	public function dispLoginlogAdminDesign()
 	{
-		// loginlogModel 객체 생성 
-		$oLoginlogModel = getModel('loginlog');
-		$config = $oLoginlogModel->getModuleConfig();
-
-		Context::set('config', $config);
-
-		// moduleModel 객체 생성
-		$oModuleModel = getModel('module');
+		Context::set('config', $this->config);
 
 		// 스킨 목록을 가져옴
-		$skin_list = $oModuleModel->getSkins($this->module_path);
+		$skin_list = getModel('module')->getSkins($this->module_path);
 		Context::set('skin_list', $skin_list);
 
 		// 모바일 스킨 목록을 가져옴
-		$mskin_list = $oModuleModel->getSkins($this->module_path, 'm.skins');
+		$mskin_list = getModel('module')->getSkins($this->module_path, 'm.skins');
 		Context::set('mskin_list', $mskin_list);
 
 		// 템플릿 파일 지정

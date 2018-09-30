@@ -26,6 +26,19 @@ class loginlogView extends loginlog
 			$template_path = sprintf("%sskins/%s/",$this->module_path, $loginlog_config->design->skin);
 		}
 		$this->setTemplatePath($template_path);
+
+		$this->config = $loginlog_config;
+		$skin = $this->config->skin;
+
+		Context::set('loginlog_config', $this->config);
+
+		$oLayoutModel = getModel('layout');
+		$layout_info = $oLayoutModel->getLayout($this->config->design->layout_srl);
+		if($layout_info)
+		{
+			$this->module_info->layout_srl = $this->config->design->layout_srl;
+			$this->setLayoutPath($layout_info->path);
+		}
 	}
 
 	/**
