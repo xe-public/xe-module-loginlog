@@ -1,0 +1,71 @@
+<load target="./css/loginlog_admin.css" />
+
+<!--TODO 왜 변수마다 같은 데이터에서 오는 것을 다시 대입하셧을까..-->
+{@$whois = $content->whois}
+<div class="ipsearch">
+	query : <span>{$whois->query->body}</span>{$whois->countrycode->body}
+	<p cond="$whois->korean"># KOREAN(UTF8)</p>
+
+	<p cond="$whois->korean->isp">[네트워크 할당 정보]</p>
+
+	<ul cond="$whois->korean">
+		{@$korean= $whois->korean}
+		{@$isp= $korean->isp}
+		<block cond="$korean->isp->netinfo">
+			<li cond="$korean->isp->netinfo->range->body"><span>ipv4주소</span>{$korean->isp->netinfo->range->body}/({$korean->isp->netinfo->prefix->body})</li>
+			<li cond="$korean->isp->netinfo->servname->body"><span>서비스명</span>{$korean->isp->netinfo->servname->body}</li>
+			<li cond="$korean->isp->netinfo->orgname->body"><span>기관명</span>{$korean->isp->netinfo->orgname->body}</li>
+			<li cond="$korean->isp->netinfo->orgid->body"><span>기관고유번호</span>{$korean->isp->netinfo->orgid->body}</li>
+			<li cond="$korean->isp->netinfo->addr->body"><span>주소</span>{$korean->isp->netinfo->addr->body}</li>
+			<li cond="$korean->isp->netinfo->zipcode->body"><span>우편번호</span>{$korean->isp->netinfo->zipcode->body}</li>
+			<li cond="$korean->isp->netinfo->regdate->body"><span>할당일자</span>{$korean->isp->netinfo->regdate->body}</li>
+		</block>
+	</ul>
+	
+	<p cond="$korean->user">[네트워크 할당 정보]</p>
+	
+	<ul cond="$korean->user">
+		{@$user= $whois->korean->user}
+		<block cond="$user->netinfo">
+			<li cond="$user->netinfo->range->body"><span>ipv4주소</span>{$user->netinfo->range->body}/({$user->netinfo->prefix->body})</li>
+			<li cond="$user->netinfo->servname->body"><span>서비스명</span>{$user->netinfo->servname->body}</li>
+			<li cond="$user->netinfo->orgname->body"><span>기관명</span>{$user->netinfo->orgname->body}</li>
+			<li cond="$user->netinfo->orgid->body"><span>기관고유번호</span>{$user->netinfo->orgid->body}</li>
+			<li cond="$user->netinfo->addr->body"><span>주소</span>{$user->netinfo->addr->body}</li>
+			<li cond="$user->netinfo->zipcode->body"><span>우편번호</span>{$user->netinfo->zipcode->body}</li>
+			<li cond="$user->netinfo->regdate->body"><span>할당일자</span>{$user->netinfo->regdate->body}</li>
+		</block>
+	</ul>
+	# ENGLISH
+	<p cond="$whois->english">[Network Information]</p>
+
+	<ul cond="$whois->english">
+		{@
+			$english = $whois->english;
+			$eisp = $english->isp;
+		}
+		<!--@if($eisp->netinfo)-->
+			<li cond="$eisp->netinfo->range->body"><span>IPv4 Address</span>{$eisp->netinfo->range->body}/({$eisp->netinfo->prefix->body})</li>
+			<li cond="$eisp->netinfo->servname->body"><span>Network Name</span>{$eisp->netinfo->servname->body}</li>
+			<li cond="$eisp->netinfo->orgname->body"><span>Organization Name</span>{$eisp->netinfo->orgname->body}</li>
+			<li cond="$eisp->netinfo->orgid->body"><span>Organization ID</span>{$eisp->netinfo->orgid->body}</li>
+			<li cond="$eisp->netinfo->addr->body"><span>Address</span>{$eisp->netinfo->addr->body}</li>
+			<li cond="$eisp->netinfo->zipcode->body"><span>Zip Code</span>{$eisp->netinfo->zipcode->body}</li>
+			<li cond="$eisp->netinfo->regdate->body"><span>Registration Date</span>{$eisp->netinfo->regdate->body}</li>
+		<!--@end-->
+	</ul>
+
+	<p cond="$whois->english->user">[Network Information]</p>
+	<ul cond="$whois->english->user">
+		{@$user= $whois->english->user}
+		<!--@if($user->netinfo)-->
+			<li cond="$user->netinfo->range->body"><span>IPv4 Address</span>{$user->netinfo->range->body}/({$user->netinfo->prefix->body})</li>
+			<li cond="$user->netinfo->servname->body"><span>Network Name</span>{$user->netinfo->servname->body}</li>
+			<li cond="$user->netinfo->orgname->body"><span>Organization Name</span>{$user->netinfo->orgname->body}</li>
+			<li cond="$user->netinfo->orgid->body"><span>Organization ID</span>{$user->netinfo->orgid->body}</li>
+			<li cond="$user->netinfo->addr->body"><span>Address</span>{$user->netinfo->addr->body}</li>
+			<li cond="$user->netinfo->zipcode->body"><span>Zip COde</span>{$user->netinfo->zipcode->body}</li>
+			<li cond="$user->netinfo->regdate->body"><span>Registration Date</span>{$user->netinfo->regdate->body}</li>
+		<!--@end-->
+	</ul>
+</div>

@@ -34,6 +34,7 @@ class loginlogAdminController extends loginlog
 		$config->exportConfig->includeGroup = Context::get('includeGroup');
 		$config->exportConfig->excludeGroup = Context::get('excludeGroup');
 		$config->exportConfig->includeAdmin = Context::get('includeAdmin');
+		$config->admin_kisa_key = Context::get('admin_kisa_key');
 
 		// 불필요한 값을 제거합니다.
 		unset($config->body);
@@ -130,6 +131,7 @@ class loginlogAdminController extends loginlog
 	 */
 	public function procLoginlogAdminCleanLog()
 	{
+		$args = new stdClass();
 		if(Context::get('expire_date'))
 		{
 			$args->expire_date = Context::get('expire_date');

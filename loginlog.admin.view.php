@@ -20,15 +20,15 @@ class loginlogAdminView extends loginlog
 		// 레이아웃 목록을 가져와서 Context::set()
 		Context::set('layout_list', $oLayoutModel->getLayoutList());
 		$mlayout_list = $oLayoutModel->getLayoutList(0, 'M');
-		
+
 		Context::set('mlayout_list', $mlayout_list);
-		
+
 		$this->config = getModel('loginlog')->getModuleConfig();
 
 		Context::set('config', $this->config);
 
 		$layout_info = $oLayoutModel->getLayout($this->config->layout_srl);
-		if($layout_info)
+		if ($layout_info)
 		{
 			$this->module_info->layout_srl = $this->config->layout_srl;
 			$this->setLayoutPath($layout_info->path);
@@ -43,7 +43,7 @@ class loginlogAdminView extends loginlog
 		$oLoginlogModel = getModel('loginlog');
 		$config = $oLoginlogModel->getModuleConfig();
 
-		if(!isset($config->listSetting) || !is_array($config->listSetting) || count($config->listSetting) < 1)
+		if (!isset($config->listSetting) || !is_array($config->listSetting) || count($config->listSetting) < 1)
 		{
 			$config->listSetting = array(
 				'member.nick_name',
@@ -64,7 +64,6 @@ class loginlogAdminView extends loginlog
 		$columnList[] = 'loginlog.browser';
 
 		Context::set('loginlog_config', $config);
-debugPrint($config);
 		// 목록을 구하기 위한 옵션
 		$args = new stdClass;
 		$args->page = Context::get('page'); ///< 페이지
@@ -74,10 +73,10 @@ debugPrint($config);
 		$args->order_type = 'desc';
 		$args->daterange_start = (int)(str_replace('-', '', Context::get('daterange_start')) . '000000');
 		$args->daterange_end = (int)(str_replace('-', '', Context::get('daterange_end')) . '235959');
-		$args->isSucceed  = Context::get('isSucceed');
+		$args->isSucceed = Context::get('isSucceed');
 
 		$ynList = array('Y' => 1, 'N' => 1);
-		if(!isset($ynList[$args->isSucceed]))
+		if (!isset($ynList[$args->isSucceed]))
 		{
 			unset($args->isSucceed);
 		}
@@ -85,9 +84,9 @@ debugPrint($config);
 		$search_keyword = Context::get('search_keyword');
 		$search_target = trim(Context::get('search_target'));
 
-		if($search_keyword)
+		if ($search_keyword)
 		{
-			switch($search_target)
+			switch ($search_target)
 			{
 				case 'member_srl':
 					$args->member_srl = (int)$search_keyword;
@@ -167,6 +166,28 @@ debugPrint($config);
 
 		// 템플릿 파일 지정
 		$this->setTemplateFile('design');
+	}
+
+	public function dispLoginlogAdminIpSearch()
+	{
+		$config = getModel('loginlog')->getModuleConfig();
+		
+		if (!isset($config->admin_kisa_key))
+		{
+			return $this->makeObject(-1, "msg_invalid_request");
+		}
+		
+		$ip = Context::get('ipaddress');
+		
+		$this->setLayoutPath('./common/tpl/');
+		$this->setLayoutFile('popup_layout');
+		$this->setTemplatePath("$this->module_path/tpl");
+		//TODO : 일부 XE 버전에서 getRemoteResource 함수가 정상적으로 작동하지 않을 가능성이 있음. 이 부분을 curl으로 대체해야함.
+		$kisaJsonString = FileHandler::getRemoteResource("http://whois.kisa.or.kr/openapi/whois.jsp?query=$ip&key=$config->admin_kisa_key&answer=json");
+		
+		$content = json_encode($kisaJsonString);
+		Context::set('content', $content);
+		$this->setTemplateFile('ip_search');
 	}
 }
 

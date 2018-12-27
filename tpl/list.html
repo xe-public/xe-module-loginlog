@@ -167,7 +167,12 @@ var phpWarning = '{sprintf($lang->php_version_warning, phpversion())}';
 						{$log->browser}
 					</block>
 				</td>
-				<td cond="$listSettingIP"><a href="{getUrl('search_target', 'ipaddress', 'search_keyword', $log->ipaddress)}">{$log->ipaddress}</a></td>
+				<td cond="$listSettingIP">
+					<a href="{getUrl('search_target', 'ipaddress', 'search_keyword', $log->ipaddress)}">{$log->ipaddress}</a>
+					<!--@if($config->admin_kisa_key)-->
+						<a href="{getUrl('', 'module', 'admin', 'act', 'dispLoginlogAdminIpSearch', 'ipaddress', $log->ipaddress)}" onclick="window.open(this.href, 'Ip Search', 'width=800, height=800'); return false;"><img src="./img/ip.png" /></a>
+					<!--@end-->
+				</td>
 				<td class="date" cond="$listSettingDate">{zdate($log->regdate, 'Y-m-d H:i:s')}</td>
 				<td><span cond="!$log->log_srl">-</span><input type="checkbox" name="cart[]" value="{$log->log_srl}" cond="$log->log_srl" /></td>
 			</tr>
@@ -180,7 +185,7 @@ var phpWarning = '{sprintf($lang->php_version_warning, phpversion())}';
 </form>
 
 <div class="search">
-	<form class="x_pagination x_pagination-centered">
+	<form class="x_pagination x_pagination-centered" cond="$page_navigation">
 		<input type="hidden" name="module" value="loginlog" />
 		<input type="hidden" name="act" value="dispLoginlogAdminList" />
 		<ul>

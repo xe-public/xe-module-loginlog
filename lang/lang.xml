@@ -162,6 +162,12 @@
 		<value xml:lang="ko"><![CDATA[선택 내보내기]]></value>
 	</item>
 	<item name="cmd_trace_loginlog">
-		<value xml:lang="ko"><![CDATA[로그인 기록 추적']]></value>
+		<value xml:lang="ko"><![CDATA[로그인 기록 추적]]></value>
+	</item>
+	<item name="admin_kisa_key">
+		<value xml:lang="ko"><![CDATA[KISA OpneAPI KEY]]></value>
+	</item>
+	<item name="about_admin_kisa_key">
+		<value xml:lang="ko"><![CDATA[한국인터넷진흥원에서 발급받은 OpenAPI Key를 입력하십시요.]]></value>
 	</item>
 </lang>

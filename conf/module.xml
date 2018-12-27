@@ -7,7 +7,8 @@
 		<action name="dispLoginlogAdminSetting" type="view" menu_name="loginlog" />
 		<action name="dispLoginlogAdminArrange" type="view" menu_name="loginlog" />
 		<action name="dispLoginlogAdminDesign" type="view" menu_name="loginlog" />
-
+		<action name="dispLoginlogAdminIpSearch" type="view" standalone="true" />
+		
 		<action name="procLoginlogAdminInsertConfig" type="controller" ruleset="insertLoginlogConfig" />
 		<action name="procLoginlogAdminInsertDesignConfig" type="controller" ruleset="insertLoginlogDesignConfig" />
 		<action name="procLoginlogAdminSaveListSetting" type="controller" />

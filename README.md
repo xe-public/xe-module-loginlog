@@ -22,6 +22,7 @@ Contributors
 [@bjrambo (BJRambo)](https://github.com/bjrambo)
 @ned3y2k
 [@misol (Misol)](https://github.com/misol)
+[@soonjae (카르마)](https://github.com/soonjae)
 
 Copyright (ko)
 ---------------------
