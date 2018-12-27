@@ -27,6 +27,24 @@
 			</div>
 		</div>
 	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="layout">{$lang->layout}</label>
+		<div class="x_controls">
+			<select id="layout" name="layout_srl" style="width:auto">
+				<option value="0">{$lang->notuse}</option>
+				<option loop="$layout_list => $key,$val" value="{$val->layout_srl}" selected="selected"|cond="$val->layout_srl == $config->design->layout_srl">{$val->title} ({$val->layout})</option>
+			</select>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="mlayout_srl">{$lang->mobile_layout}</label>
+		<div class="x_controls">
+			<select id="mlayout_srl" name="mlayout_srl" style="width:auto">
+				<option value="0">{$lang->notuse}</option>
+				<option loop="$mlayout_list => $key,$val" value="{$val->layout_srl}" selected="selected"|cond="$val->layout_srl == $config->design->mlayout_srl">{$val->title} ({$val->layout})</option>
+			</select>
+		</div>
+	</div>
 	<div class="x_clearfix btnArea">
 		<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}"></span>
 	</div>

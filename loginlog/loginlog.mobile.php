@@ -32,6 +32,15 @@ class loginlogMobile extends loginlogView
 		{
 			$template_path = sprintf('%sm.skins/%s', $this->module_path, $mskin);
 		}
+		
+		$this->config = getModel('loginlog')->getModuleConfig();
+		$oLayoutModel = getModel('layout');
+		$layout_info = $oLayoutModel->getLayout($this->config->design->layout_srl);
+		if($layout_info)
+		{
+			$this->module_info->layout_srl = $this->config->design->layout_srl;
+			$this->setLayoutPath($layout_info->path);
+		}
 
 		$this->setTemplatePath($template_path);
 	}
