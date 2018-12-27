@@ -164,4 +164,10 @@
 	<item name="cmd_trace_loginlog">
 		<value xml:lang="ko"><![CDATA[로그인 기록 추적']]></value>
 	</item>
+	<item name="admin_kisa_key">
+        <value xml:lang="ko"><![CDATA[KISA OpneAPI KEY]]></value>
+    	</item>
+    	<item name="about_admin_kisa_key">
+        	<value xml:lang="ko"><![CDATA[한국인터넷진흥원에서 발급받은 OpenAPI Key를 입력하십시요.<br /><a href="https://xn--c79as89aj0e29b77z.xn--3e0b707e/kor/whois/openAPI_KeyCre.jsp" target="_blank">https://후이즈검색.한국/kor/whois/openAPI_KeyCre.jsp</a>]]></value>
+    	</item>
 </lang>
