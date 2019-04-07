@@ -2,8 +2,8 @@
 <module version="0.2">
 	<title xml:lang="ko">로그인 기록</title>
 	<description xml:lang="ko">로그인 시 접속한 IP와 시간, 접속 환경을 기록하는 모듈입니다.</description>
-	<version>1.4.4</version>
-	<date>2018-06-03</date>
+	<version>1.5.0</version>
+	<date>2019-04-07</date>
 	<category>member</category>
 
 	<author link="https://github.com/xe-public/xe-module-loginlog">
