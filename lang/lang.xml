@@ -182,4 +182,7 @@
 	<item name="show_admin">
 		<value xml:lang="ko"><![CDATA[관리자에게만 보이기]]></value>
 	</item>
+	<item name="multiple_connection">
+		<value xml:lang="ko"><![CDATA[다중 계정 의심 목록]]></value>
+	</item>
 </lang>
