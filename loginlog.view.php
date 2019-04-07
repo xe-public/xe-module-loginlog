@@ -54,6 +54,13 @@ class loginlogView extends loginlog
 			return $this->stop('msg_not_permitted');
 		}
 
+		$config = getModel('loginlog')->getModuleConfig();
+		if($config->hideLoginlogTab === 'N')
+		{
+			
+			return $this->makeObject();
+		}
+
 		// 목록을 구하기 위한 옵션
 		$args = new stdClass;
 		$args->page = Context::get('page'); ///< 페이지
