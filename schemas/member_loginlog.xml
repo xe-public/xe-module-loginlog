@@ -1,8 +1,8 @@
 <table name="member_loginlog">
 	<column name="log_srl" type="number" size="11" notnull="notnull" default="0" primary_key="primary_key" />
 	<column name="member_srl" type="number" size="11" notnull="notnull" index="member_srl" />
-	<column name="user_id" type="number" size="11" notnull="notnull" index="idx_user_id" />
-	<column name="email_address" type="number" size="11" notnull="notnull" index="idx_email_address" />
+	<column name="user_id" type="varchar" size="80" notnull="notnull" index="idx_user_id" />
+	<column name="email_address" type="varchar" size="250" notnull="notnull" index="idx_email_address" />
 	<column name="ipaddress" type="varchar" size="128" notnull="notnull" index="idx_ipaddress" />
 	<column name="is_succeed" type="char" size="1" notnull="notnull" default="Y" index="idx_is_succeed" />
 	<column name="platform" type="varchar" size="50" notnull="notnull" default="Unknown" index="idx_platform" />
