@@ -170,4 +170,16 @@
 	<item name="about_admin_kisa_key">
 		<value xml:lang="ko"><![CDATA[한국인터넷진흥원에서 발급받은 OpenAPI Key를 입력하십시요.]]></value>
 	</item>
+	<item name="hide_loginlog_tab">
+		<value xml:lang="ko"><![CDATA[로그인 기록 탭 숨기기]]></value>
+	</item>
+	<item name="hide_all">
+		<value xml:lang="ko"><![CDATA[모든 사용자에게 숨기기]]></value>
+	</item>
+	<item name="show_all">
+		<value xml:lang="ko"><![CDATA[모든 사용자에게 보이기]]></value>
+	</item>
+	<item name="show_admin">
+		<value xml:lang="ko"><![CDATA[관리자에게만 보이기]]></value>
+	</item>
 </lang>

@@ -67,6 +67,8 @@ class loginlogModel extends loginlog
 			{
 				$config->design = new stdClass;
 			}
+			
+			if(!$config->design->hideLoginlogTab) $config->design->hideLoginlogTab = 'Y';
 		}
 
 		return $config;

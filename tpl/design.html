@@ -7,7 +7,7 @@
 	<div class="x_control-group">
 		<label class="x_control-label">{$lang->skin}</label>
 		<div class="x_controls">
-			<select name="skin"  onchange="doGetSkinColorset(this.options[this.selectedIndex].value)">
+			<select name="skin" onchange="doGetSkinColorset(this.options[this.selectedIndex].value)">
 				<option value="{$key}" selected|cond="$config->design->skin == $key" loop="$skin_list => $key, $val">{$val->title}</option>
 			</select>
 		</div>
@@ -45,6 +45,17 @@
 			</select>
 		</div>
 	</div>
+	<div class="x_control-group">
+		<label for="hideLoginlogTab" class="x_control-label">{$lang->hide_loginlog_tab}</label>
+		<div class="x_controls">
+			<select id="hideLoginlogTab" name="hideLoginlogTab">
+				<option value="A" selected="selected"|cond="$config->design->hideLoginlogTab === 'A'">{$lang->show_all}</option>
+				<option value="Y" selected="selected"|cond="$config->design->hideLoginlogTab === 'Y'">{$lang->hide_all}</option>
+				<option value="N" selected="selected"|cond="$config->design->hideLoginlogTab === 'N'">{$lang->show_admin}</option>
+			</select>
+		</div>
+	</div>
+
 	<div class="x_clearfix btnArea">
 		<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}"></span>
 	</div>

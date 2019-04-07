@@ -249,12 +249,18 @@ class loginlogController extends loginlog
 		{
 			return $this->makeObject();
 		}
+		
+		$config = getModel('loginlog')->getModuleConfig();
 
 		/**
 	 	* 로그인 기록 메뉴 추가
-	 	*/
-		$oMemberController = getController('member');
-		$oMemberController->addMemberMenu('dispLoginlogHistories', 'cmd_view_loginlog');
+	 	*/	
+		if($config->design->hideLoginlogTab === 'Y' || ($config->design->hideLoginlogTab === 'N') && $logged_info->is_admin === 'Y')
+		{
+			
+			getController('member')->addMemberMenu('dispLoginlogHistories', 'cmd_view_loginlog');
+		}
+		
 	}
 
 	public function triggerBeforeModuleProc()

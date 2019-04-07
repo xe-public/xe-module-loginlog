@@ -112,7 +112,7 @@ class loginlogAdminController extends loginlog
 		unset($config->module);
 		unset($config->ruleset);
 
-		$config->design = Context::gets('skin', 'mskin', 'layout_srl', 'mlayout_srl');
+		$config->design = Context::gets('skin', 'mskin', 'layout_srl', 'mlayout_srl', 'hideLoginlogTab');
 
 		// DB에 설정값을 저장합니다
 		$oModuleController = getController('module');
