@@ -255,7 +255,7 @@ class loginlogController extends loginlog
 		/**
 	 	* 로그인 기록 메뉴 추가
 	 	*/	
-		if($config->design->hideLoginlogTab === 'Y' || ($config->design->hideLoginlogTab === 'N') && $logged_info->is_admin === 'Y')
+		if($config->design->hideLoginlogTab === 'A' || ($config->design->hideLoginlogTab === 'N') && $logged_info->is_admin === 'Y')
 		{
 			
 			getController('member')->addMemberMenu('dispLoginlogHistories', 'cmd_view_loginlog');
